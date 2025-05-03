@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -8,7 +8,8 @@ import Animated, {
   withSequence,
 } from 'react-native-reanimated';
 
-import { ThemedText } from '@/components/ThemedText';
+// Fix the import path - use relative path within the same directory
+import { ThemedText } from './ThemedText';
 
 export function HelloWave() {
   const rotationAnimation = useSharedValue(0);
