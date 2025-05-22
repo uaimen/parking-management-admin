@@ -21,96 +21,13 @@ interface SignupApiResponse {
     userId?: string;
 }
 
-// --- Axios POST Method for Signup (Commented Out) ---
-
-/*
-// Replace with your actual API base URL for authentication
-const AUTH_API_BASE_URL = 'YOUR_AUTH_API_BASE_URL'; // e.g., 'https://your-app.com/api/auth'
-
-// Function to handle user signup via API
-const signupUser = async (name: string, email: string, password: string): Promise<SignupApiResponse | null> => {
-  try {
-    // Replace '/signup' with your actual signup endpoint
-    const endpoint = `${AUTH_API_BASE_URL}/signup`; // Or '/register' etc.
-
-    const response: AxiosResponse<SignupApiResponse> = await axios.post(
-      endpoint,
-      {
-        name: name, // Or 'username' depending on your API
-        email: email,
-        password: password,
-      },
-      {
-        // Optional: Add headers if needed
-      }
-    );
-
-    // Assuming your API returns a success flag in the response body
-    if (response.data.success) {
-      console.log('Signup successful via API.');
-      // Assuming the API returns a success message or new user ID
-      return response.data;
-    } else {
-      console.error('API signup failed:', response.data.message);
-      // Throw an error with the API's message
-      throw new Error(response.data.message || 'Signup failed.');
-    }
-  } catch (error: any) {
-    console.error('Axios error during signup:', error);
-     if (axios.isAxiosError(error)) {
-        console.error('Axios error details:', error.response?.data, error.request, error.config);
-        if (error.response) {
-             // Server responded with a status other than 2xx
-             const errorMessage = error.response.data?.message || error.message || `Server error: ${error.response.status}`;
-             throw new Error(errorMessage);
-        } else if (error.request) {
-            // Request was made but no response received
-            throw new Error('Network error: Could not reach the server.');
-        } else {
-            // Something happened in setting up the request
-            throw new Error(`Request setup error: ${error.message}`);
-        }
-     } else {
-        // Handle other potential errors
-        throw new Error(`An unexpected error occurred: ${error.message}`);
-     }
-  }
-};
-
-// Example usage within handleSignup:
-// const handleSignup = async () => {
-//   // ... validation checks ...
-//   setLoading(true);
-//   try {
-//     const signupResponse = await signupUser(name, email, password);
-//     if (signupResponse && signupResponse.success) {
-//       Alert.alert('Success', signupResponse.message || 'Account created successfully!');
-//       router.replace('/auth/login'); // Navigate to login after successful signup
-//     } else {
-//        // This else block might be redundant if signupUser throws on API failure
-//        Alert.alert('Signup Failed', signupResponse?.message || 'Failed to create account.');
-//     }
-//   } catch (err: any) {
-//     Alert.alert('Signup Failed', err.message || 'An error occurred during signup.');
-//   } finally {
-//     setLoading(false);
-//   }
-// };
-
-*/
-
-// --- End Axios POST Method ---
-
-
 const SignupScreen = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-   // Use Dimensions if you need to adjust styles based on screen size
-  // const { height, width } = Dimensions.get('window');
-
+   
   const router = useRouter(); // Assuming expo-router
 
   const handleSignup = async () => {
@@ -121,26 +38,7 @@ const SignupScreen = () => {
 
     setLoading(true);
 
-    // --- Replace the following setTimeout with your actual API call ---
-    /*
-    try {
-      const signupResponse = await signupUser(name, email, password); // Call the actual API function
-      if (signupResponse && signupResponse.success) {
-         Alert.alert('Success', signupResponse.message || 'Account created successfully!');
-         router.replace('/auth/login'); // Navigate to login after successful signup
-      } else {
-         Alert.alert('Signup Failed', signupResponse?.message || 'Failed to create account.');
-      }
-    } catch (err: any) {
-      Alert.alert('Signup Failed', err.message || 'An error occurred during signup.');
-    } finally {
-      setLoading(false);
-    }
-    */
-    // --- End API Call Replacement ---
-
-
-    // --- Dummy Signup Logic (Remove this when using the API) ---
+  
     console.log('Attempting dummy signup...');
     setTimeout(() => {
       Alert.alert('Success', 'Dummy Account created successfully!');

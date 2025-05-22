@@ -47,78 +47,7 @@ interface RevenueReportApiResponse {
 }
 
 // Define the types for the report categories
-type ReportCategory = 'occupancy' | 'revenue' | null; // null when no report is selected
-
-// --- Axios Fetch/GET Methods (Commented Out) ---
-// (Keeping the commented out API logic from previous versions)
-
-/*
-// Replace with your actual API base URL for authentication
-const API_BASE_URL = 'YOUR_API_BASE_URL'; // e.g., 'https://your-app.com/api/admin/reports'
-
-// Function to fetch Occupancy Report data
-const fetchOccupancyReport = async (): Promise<OccupancyItem[] | null> => {
-  try {
-    const response: AxiosResponse<OccupancyReportApiResponse> = await axios.get(
-      `${API_BASE_URL}/occupancy`,
-      {
-        // Optional: Add headers, e.g., for authentication
-        // headers: {
-        //   Authorization: `Bearer YOUR_AUTH_TOKEN`, // Replace with actual token
-        // },
-      }
-    );
-
-    if (response.data.success) {
-      console.log('Successfully fetched occupancy report.');
-      return response.data.data;
-    } else {
-      console.error('API error fetching occupancy report:', response.data.message);
-      throw new Error(response.data.message || 'Failed to fetch occupancy report.');
-    }
-  } catch (error: any) {
-    console.error('Axios error fetching occupancy report:', error);
-     if (axios.isAxiosError(error)) {
-        console.error('Axios error details:', error.response?.data, error.request, error.config);
-        if (error.response) throw new Error(`Server error: ${error.response.status} - ${error.response.data?.message || error.message}`);
-        else if (error.request) throw new Error('Network error: No response received.');
-        else throw new Error(`Request setup error: ${error.message}`);
-     } else throw new Error(`An unexpected error occurred: ${error.message}`);
-  }
-};
-
-// Function to fetch Revenue Report data
-const fetchRevenueReport = async (): Promise<RevenueItem[] | null> => {
-  try {
-    const response: AxiosResponse<RevenueReportApiResponse> = await axios.get(
-      `${API_BASE_URL}/revenue`,
-      {
-        // Optional: Add headers, e.g., for authentication
-        // headers: {
-        //   Authorization: `Bearer YOUR_AUTH_TOKEN`, // Replace with actual token
-        // },
-      }
-    );
-
-    if (response.data.success) {
-      console.log('Successfully fetched revenue report.');
-      return response.data.data;
-    } else {
-      console.error('API error fetching revenue report:', response.data.message);
-      throw new Error(response.data.message || 'Failed to fetch revenue report.');
-    }
-  } catch (error: any) {
-    console.error('Axios error fetching revenue report:', error);
-     if (axios.isAxiosError(error)) {
-        console.error('Axios error details:', error.response?.data, error.request, error.config);
-        if (error.response) throw new Error(`Server error: ${error.response.status} - ${error.response.data?.message || error.message}`);
-        else if (error.request) throw new Error('Network error: No response received.');
-        else throw new Error(`Request setup error: ${error.message}`);
-     } else throw new Error(`An unexpected error occurred: ${error.message}`);
-  }
-};
-*/
-// --- End Axios Fetch/GET Methods ---
+type ReportCategory = 'occupancy' | 'revenue' | null; 
 
 const { width } = Dimensions.get('window');
 
@@ -142,31 +71,7 @@ const ReportScreen = () => {
     setLoading(true); 
     setError(''); 
 
-    // --- Replace with your actual API calls ---
-    /*
-    try {
-      let fetchedData: OccupancyItem[] | RevenueItem[] | null = null;
-      if (category === 'occupancy') {
-        fetchedData = await fetchOccupancyReport();
-      } else if (category === 'revenue') {
-        fetchedData = await fetchRevenueReport();
-      }
-
-      if (fetchedData) {
-        setReportData(fetchedData); // Update state with fetched data
-      } else {
-        setReportData([]);
-      }
-    } catch (err: any) {
-      setError(err.message || 'Failed to load report.');
-      setReportData([]);
-    } finally {
-      setLoading(false);
-    }
-    */
-    // --- End API Calls ---
-
-    // --- Dummy Data Loading (for demonstration) ---
+   
     console.log(`Simulating fetching ${category} report...`);
     await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
 

@@ -59,7 +59,7 @@ const ParkingAreaScreen = () => {
     setLoadingLocations(true);
     setError('');
     try {
-      // Initial dummy location data including Admin Block
+     
       const initialDummyLocationData: ParkingLocation[] = [
         { id: 'loc1', name: 'nstpparking', displayName: 'NSTP Parking' },
         { id: 'loc2', name: 'seecsparking', displayName: 'SEECS Parking' },
@@ -128,25 +128,7 @@ const ParkingAreaScreen = () => {
         displayName: newAreaDisplayName
     };
 
-    //  Integrate API call here to add the new location to your backend
-    // Example (uncomment and replace with your API logic):
-    /*
-    addParkingArea({ name: newLocation.name, displayName: newLocation.displayName })
-      .then(addedLocation => {
-        if (addedLocation) {
-          setLocations(prevLocations => [...prevLocations, addedLocation]);
-          setSelectedLocation(addedLocation);
-          Alert.alert('Success', `${addedLocation.displayName} added successfully!`);
-        } else {
-           Alert.alert('Error', 'Failed to add parking area.');
-        }
-      })
-      .catch(err => {
-         Alert.alert('Error', err.message || 'An error occurred while adding the parking area.');
-      });
-    */
-
-    // Dummy logic to add and select the new location locally (remove when using API)
+  
     setLocations(prevLocations => [...prevLocations, newLocation]);
     setSelectedLocation(newLocation);
 

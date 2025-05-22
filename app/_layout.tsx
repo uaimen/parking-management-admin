@@ -77,9 +77,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
       }
     } catch (err) {
       console.error('Login error:', err);
-      // Optionally clear token on login error if it might be invalid
-      // await AsyncStorage.removeItem('token');
-      // setAuthenticated(false);
+     
       throw err; // Re-throw the error to be handled by the caller (e.g., LoginScreen)
     }
   };
@@ -179,12 +177,7 @@ function RootStackNavigator() {
   return (
     <Stack>
       {isAuthenticated ? (
-        // If authenticated, render the protected routes (e.g., admin tabs)
-        // Make sure your admin routes are defined within the "(admin)" group
-        // or whatever group name you use for authenticated users.
-        // If your admin dashboard is the entry point after login,
-        // you might not need a separate "(tabs)" group here unless you have
-        // a bottom tab navigator for admin. Adjust route names as per your project structure.
+       
          <>
             {/* Define your protected routes here */}
             <Stack.Screen name="(admin)" options={{ headerShown: false }} /> {/* Example: Admin routes group */}
@@ -218,5 +211,4 @@ const styles = StyleSheet.create({
     // Add other global styles if needed
 });
 
-// You might need to adjust your project structure to have 'app/(admin)/...'
-// and 'app/auth/login.tsx', 'app/auth/signup.tsx' for expo-router to pick them up correctly.
+

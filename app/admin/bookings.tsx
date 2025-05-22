@@ -35,73 +35,6 @@ interface BookingApiResponse {
 // Define the types for the booking categories
 type BookingCategory = 'active' | 'past' | 'all';
 
-// Axios Fetch/GET Methods 
-
-/*
-// Replace with your actual API base URL
-const API_BASE_URL = 'YOUR_API_BASE_URL';
-
-// Function to fetch bookings by category
-const fetchBookingsByCategory = async (category: BookingCategory): Promise<Booking[] | null> => {
-  let endpoint = '';
-  switch (category) {
-    case 'active':
-      endpoint = '/bookings/active';
-      break;
-    case 'past':
-      endpoint = '/bookings/past';
-      break;
-    case 'all':
-    default:
-      endpoint = '/bookings/all';
-      break;
-  }
-
-  try {
-    const response: AxiosResponse<BookingApiResponse> = await axios.get(
-      `${API_BASE_URL}${endpoint}`
-    );
-
-    if (response.data.success) {
-      console.log(`Successfully fetched ${category} bookings.`);
-      return response.data.data;
-    } else {
-      console.error(`API error fetching ${category} bookings:`, response.data.message);
-      throw new Error(response.data.message || 'Failed to fetch bookings.');
-    }
-  } catch (error: any) {
-    console.error(`Axios error fetching ${category} bookings:`, error);
-    if (axios.isAxiosError(error)) {
-      console.error('Axios error details:', error.response?.data, error.request, error.config);
-      if (error.response) throw new Error(`Server error: ${error.response.status} - ${error.response.data?.message || error.message}`);
-      else if (error.request) throw new Error('Network error: No response received.');
-      else throw new Error(`Request setup error: ${error.message}`);
-    } else throw new Error(`An unexpected error occurred: ${error.message}`);
-  }
-};
-
-// Example usage within loadBookings:
-// const loadBookings = async (category: BookingCategory) => {
-//   setLoading(true);
-//   setError('');
-//   try {
-//     const fetchedData = await fetchBookingsByCategory(category);
-//     if (fetchedData) {
-//       setBookings(fetchedData);
-//     } else {
-//        setBookings([]);
-//     }
-//   } catch (err: any) {
-//     setError(err.message || 'Failed to load bookings.');
-//     setBookings([]);
-//   } finally {
-//     setLoading(false);
-//   }
-// };
-*/
-// --- End Axios Fetch/GET Methods ---
-
-
 const BookingsScreen = () => {
   // to hold the currently displayed bookings
   const [bookings, setBookings] = useState<Booking[]>([]);
@@ -115,9 +48,7 @@ const BookingsScreen = () => {
     setLoading(true);
     setError('');
     try {
-      // Replace
-      // const fetchedData = await fetchBookingsByCategory(category);
-
+      
       // For now
       const dummyData: Booking[] = [
         { id: '1', areaName: 'North Lot', slotNumber: 12, user: 'Aimen', startTime: '2025-05-05 08:00', endTime: '2025-05-05 10:00' }, // Active
@@ -151,7 +82,7 @@ const BookingsScreen = () => {
       setBookings(filteredData);
 
     } catch (err: any) {
-      // In a real scenario, use err.message from the thrown error
+      // In a real scenario
       setError('Failed to load bookings.');
       setBookings([]); 
     } finally {
@@ -187,11 +118,10 @@ const BookingsScreen = () => {
   );
 
   return (
-    <SafeAreaView style={styles.safeArea}> {/* Use SafeAreaView */}
+    <SafeAreaView style={styles.safeArea}> 
       <View style={styles.container}>
         <Text style={styles.header}>My Bookings</Text>
 
-        {/* Booking Category Pills */}
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.categoryList}>
           <TouchableOpacity
             style={[
